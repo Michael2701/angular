@@ -1,0 +1,19 @@
+ul{
+    width: 33rem;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    list-style-type: none;
+    li{
+        .app-sidemenu-img{
+            width: 28rem;
+            margin: .5rem 1rem;
+            filter: brightness(50%);
+            transition: all .3s;
+            cursor: pointer;
+            &:hover{
+                filter: brightness(100%)
+            }
+        }
+    }
+}

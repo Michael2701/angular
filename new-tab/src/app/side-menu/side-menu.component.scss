@@ -1,0 +1,27 @@
+.app-sidemenu{
+    position: fixed;
+    right: -30rem;
+    top: 0;
+    width: 30rem;
+    height: 100vh;
+    padding-top: 1rem;
+    overflow: hidden;
+    background-color: rgba(255,255,255,.9);
+    z-index: 50;
+    transition: all .3s;
+}
+.app-sidemenu.show{
+    right: 0rem;
+}
+
+.btn-show-sidemenu{
+    position:fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 51;
+}
+.app-backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+}

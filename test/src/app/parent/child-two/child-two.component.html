@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-sm-2">
+        <h3 *ngIf="number; else other">
+            {{ number }}
+        </h3>
+        <ng-template #other>
+            <p>Choose number</p>
+        </ng-template>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <input class="form-control" type="number" id="number" #newNumber>
+        </div>
+        <button (click)="addNumber()">Add</button>
+    </div>
+</div>
+

@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col xs-12">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" [disabled]="editForm.invalid" class="btn btn-success">Save</button>
+                    <button (click)="cancelEditing()" type="button" class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            class="form-control"
+                            formControlName="name">
+                        <span class="error" *ngIf="!editForm.get('name').valid && editForm.get('name').touched">
+                            <span *ngIf="editForm.get('name').errors['required']">Name is required</span>
+                            <span *ngIf="editForm.get('name').errors['minlength']">Please enter a valid name</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="imagePath">Image URL</label>
+                        <input 
+                            type="text" 
+                            id="imagePath" 
+                            class="form-control"
+                            formControlName="imagePath"
+                            #imagePath>
+                            <span class="error" *ngIf="!editForm.get('imagePath').valid && editForm.get('imagePath').touched">
+                                <span *ngIf="editForm.get('imagePath').errors['required']">Image URL is required</span>
+                                <!-- <span *ngIf="editForm.get('imagePath').errors['pattern']">Please enter a valid URL</span> -->
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="imagePath.value" alt="" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea 
+                            rows="6"
+                            id="description" 
+                            class="form-control"
+                            formControlName="description"></textarea>
+                            <span class="error" *ngIf="!editForm.get('description').valid && editForm.get('description').touched">
+                                <span *ngIf="editForm.get('description').errors['required']">Description is required</span>
+                                <span *ngIf="editForm.get('description').errors['minlength']">Description is too short</span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+               
+
+                <div class="col-xs-12" formArrayName="ingredients">
+                    <div
+                        class="row"
+                        *ngFor="let control of getControls(); let i = index"
+                        [formGroupName]="i"
+                        style="margin-top: 10px">
+
+                        <div class="col-xs-8">
+                            <input 
+                                class="form-control"  
+                                type="text"
+                                formControlName="name">
+                                <span class="error" *ngIf="!control.get('name').valid && control.get('name').touched">
+                                    <span *ngIf="control.get('name').errors['required']">Name is required</span>
+                                    <span *ngIf="control.get('name').errors['minlength']">Name is too short</span>
+                                </span>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input 
+                                    class="form-control" 
+                                    type="number"
+                                    formControlName="amount">
+                                </div>
+                                <div class="col-xs-6">
+                                    <button class="btn btn-danger" (click)="deleteIngredient(i)">X</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <span class="error" *ngIf="!control.get('amount').valid && control.get('amount').touched">
+                                        <span *ngIf="control.get('amount').errors['required']">Amount is required</span>
+                                        <span *ngIf="control.get('amount').errors['min']">Amount is too small</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button 
+                            type="button"
+                            class="btn btn-success"
+                            (click)="addIngredient()">
+                            Add Ingredient</button>
+                        </div>               
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

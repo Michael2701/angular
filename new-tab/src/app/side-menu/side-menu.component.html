@@ -1,0 +1,14 @@
+<div (click)="onShowSideMenu()">
+    <app-rounded-btn 
+        class="btn-show-sidemenu"
+        *ngIf="!isMenuShown">
+    </app-rounded-btn>
+
+    <div [ngClass]="{show: isMenuShown}" class="app-sidemenu">
+        <app-backgrounds class="app-backgrounds"></app-backgrounds>
+
+    </div>
+    
+
+    <app-backdrop class="app-backdrop" *ngIf="isMenuShown"></app-backdrop>
+</div>

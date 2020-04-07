@@ -1,0 +1,13 @@
+<h2>Brewery Details</h2>
+
+<div *ngIf="item">
+    <h3><a href="{{item['website_url']}}">{{ item['name'] }}</a></h3>
+    <p>Address: {{ item['street'] }}, {{ item['city'] }}, {{ item['state'] }}</p>
+    <p>{{ item['country'] }}</p>
+    <p>Postal code: {{ item['postal_code'] }}</p>
+    <ng-template [ngIf]="item['phone']" [ngIfElse]="none">
+        Phone: {{item['phone']}}
+    </ng-template>
+    <ng-template #none>No phone provided</ng-template>
+    
+</div>

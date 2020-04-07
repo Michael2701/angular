@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let bgImg  of backgroundImgs; let i = index"
+    (click)="onChooseBg(i)">
+        <img class="app-sidemenu-img" src="{{bgImg}}" alt="">
+    </li>
+</ul>

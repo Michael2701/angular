@@ -1,0 +1,5 @@
+<ul *ngIf="true" class="app-search-results" #searchResultElms>
+    <li *ngFor="let item of items">
+        <a target="_blanc" href="{{item.link}}">{{item.title}}</a>
+    </li>
+</ul>

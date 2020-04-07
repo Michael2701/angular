@@ -1,0 +1,16 @@
+<form class="app-searchbar" (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <div class="app-searchbar-group">
+        <input 
+            ngModel
+            required
+            type="text" 
+            class="app-searchbar-control"
+            name="app_search"
+            autocomplete="off">
+        <div class="app-searchbar-icon">
+            <i class="icon-search fas fa-search fa-large"></i>
+        </div>
+        <app-search-results [items]="searchResponse"></app-search-results>
+    </div>
+</form>
+
